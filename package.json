@@ -1,12 +1,13 @@
 {
   "name": "mark-it-down",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "The modern Markdown parser",
   "main": "./dist/mark-it-down.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",
     "build": "NODE_ENV=build babel-node ./scripts/build",
     "test": "jest src/ --no-cache --coverage",
+    "publish": "cd npm && npm publish",
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
   "jest": {

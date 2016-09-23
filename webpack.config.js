@@ -21,9 +21,7 @@ module.exports = {
   },
   output: {
     path: `${__dirname}/npm/dist`,
-    libraryTarget: 'umd',
-    // library: 'MarkItDown',
-    umdNamedDefine: false,
+    libraryTarget: isDev ? 'var' : 'commonjs2',
     filename: '[name].js',
   },
 
