@@ -1,4 +1,3 @@
-// import 'prismjs'
 /**
  * import by order dependence
  */
@@ -12,7 +11,7 @@ import 'prismjs/components/prism-markup.min.js'
 import 'prismjs/components/prism-bash.min.js'
 import 'prismjs/components/prism-java.min.js'
 
-// Web
+// // Web
 import 'prismjs/components/prism-javascript.min.js'
 import 'prismjs/components/prism-json.min.js'
 import 'prismjs/components/prism-jsx.min.js'
