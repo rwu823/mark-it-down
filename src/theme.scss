@@ -1,0 +1,55 @@
+:global(.mark-it-down) {
+  font-size: 16px;
+  line-height: 1.2;
+  font-family: arial;
+
+  color: #333;
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  li {
+    line-height: 1.8;
+  }
+
+  blockquote {
+    border-left: 5px solid #e8e8e8;
+    margin: 0;
+    padding: 8px 0 8px 12px;
+    p {
+      margin: 0;
+    }
+  }
+
+  table {
+    color: #6476ae;
+    border-spacing: 0;
+    tbody > tr:nth-child(even) {
+      background: #f0f3ff;
+    }
+    th {
+      border-bottom: 2px solid #6476ae;
+    }
+    td {
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+    th, td {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+}
+.light {
+  p code {
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+    padding: 2px 4px;
+  }
+}
+
+.dark {
+
+}
