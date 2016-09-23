@@ -1,5 +1,5 @@
 <h1 align="center">
-  mark-it-down
+  <img width="100" src="https://raw.githubusercontent.com/rwu823/mark-it-down/master/assets/logo.png" />
 </h1>
 
 <p align="center">  
@@ -16,6 +16,7 @@
 </p>
 
 
+# mark-it-down
 The modern Markdown parser, painless and all in one, your good friend of write documentation.
 
 
