@@ -1,6 +1,6 @@
-<h1 align="center">
+<p align="center">
   <img width="100" src="https://raw.githubusercontent.com/rwu823/mark-it-down/master/assets/logo.png" />
-</h1>
+</p>
 
 <p align="center">  
   <a href="https://www.npmjs.com/package/mark-it-down">
