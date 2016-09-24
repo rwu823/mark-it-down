@@ -1,6 +1,6 @@
 {
   "name": "mark-it-down",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "The modern Markdown parser",
   "main": "./dist/mark-it-down.js",
   "scripts": {

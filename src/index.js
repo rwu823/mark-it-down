@@ -1,7 +1,13 @@
 import Showdown from 'showdown'
+
+import createStyleSheet from './create-stylesheet'
 import './prism'
 import linkHead from './link-head-hash'
 import theme from './theme.scss'
+
+const s = theme.locals || {}
+
+createStyleSheet(theme.toString())
 
 const _private = new WeakMap()
 class Markdown {
@@ -15,14 +21,8 @@ class Markdown {
       tables: true,
       tasklists: true,
       theme: 'light', // or dark
-      codeTheme: 'light', // or dark
+      codeTheme: 'dark', // or dark
       ...option
-    }
-
-    if (opts.codeTheme === 'light') {
-      require('prismjs/themes/prism.css')
-    } else {
-      require('prismjs/themes/prism-twilight.css')
     }
     _p.md = new Showdown.Converter(opts)
     this.opts = opts
@@ -31,6 +31,8 @@ class Markdown {
   toHTML(markdownSyntax) {
     const { md } = _private.get(this)
     const { opts } = this
+    const themeClass = opts.theme
+    const codeThemeClass = `code-${opts.codeTheme}`
 
     let html = md.makeHtml(markdownSyntax)
 
@@ -38,7 +40,7 @@ class Markdown {
       html = linkHead(html)
     }
 
-    return `<div class="mark-it-down ${theme[opts.theme]}">${html}</div>`
+    return `<div class="mark-it-down ${s[themeClass]} ${s[codeThemeClass]}">${html}</div>`
   }
 
 }

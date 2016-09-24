@@ -42,19 +42,12 @@ module.exports = {
         loader: 'babel',
       },
       {
-        test: /\.css$/,
-        loader: 'style!css'
-      },
-      {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loaders: [
-          'style',
-          isDev
-            ? 'css?modules&localIdentName=[local]--[hash:base64:5]&sourceMap'
-            : 'css?modules&localIdentName=[hash:base64:5]',
+        loader: [
+          'css?modules&localIdentName=[local]--[hash:base64:5]&sourceMap',
           'sass'
-        ],
+        ].join('!')
       },
       {
         test: /\.md$/,
