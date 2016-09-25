@@ -21,7 +21,7 @@ class Markdown {
       tables: true,
       tasklists: true,
       theme: 'light', // or dark
-      codeTheme: 'dark', // or dark
+      codeTheme: 'light', // or dark
       ...option
     }
     _p.md = new Showdown.Converter(opts)
