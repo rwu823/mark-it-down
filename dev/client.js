@@ -1,6 +1,16 @@
 import Markdown from '../src'
 
-const md = new Markdown({})
-const html = md.toHTML(require('./test.md'))
+const lightMD = new Markdown({
 
-document.body.innerHTML = html
+})
+const darkMD = new Markdown({
+  theme: 'dark',
+  codeTheme: 'dark',
+})
+const markdownSyntax = require('../README.md') + require('./doc.md')
+
+const body = document.body
+
+body.querySelector('#light-theme').innerHTML = lightMD.toHTML(markdownSyntax)
+body.querySelector('#dark-theme').innerHTML = darkMD.toHTML(markdownSyntax)
+

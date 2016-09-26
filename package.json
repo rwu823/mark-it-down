@@ -5,7 +5,9 @@
   "main": "./dist/mark-it-down.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",
-    "build": "NODE_ENV=build babel-node ./scripts/build",
+    "build": "npm run build.lib & npm run build.demo",
+    "build.lib": "NODE_ENV=build babel-node ./scripts/build.lib",
+    "build.demo": "NODE_ENV=demo webpack --progress",
     "test": "jest src/ --no-cache --coverage",
     "publish": "cd npm && npm publish",
     "coveralls": "cat coverage/lcov.info | coveralls"

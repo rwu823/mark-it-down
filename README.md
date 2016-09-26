@@ -19,6 +19,8 @@
 # mark-it-down
 The modern Markdown parser, painless and all in one, your good friend of write documentation.
 
+## Demo
+`mark-it-down` provides two themes: the `light` and `dark`, check [here](http://rwu823.github.io/mark-it-down) to review.
 
 ## Install
 
