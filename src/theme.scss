@@ -5,8 +5,25 @@
 
   color: #333;
   a {
+    text-decoration: underline;
+    color: #8585ff;
+  }
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
     text-decoration: none;
     color: #333;
+  }
+
+  p code {
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+    padding: 2px 4px;
   }
 
   li {
@@ -63,18 +80,31 @@
     -ms-hyphens: none;
     hyphens: none;
   }
-}
-.light {
-  p code {
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-radius: 4px;
-    padding: 2px 4px;
+
+  &.dark {
+    background: #333;
+    color: #eee;
+
+    blockquote {
+      border-left-color: #777575;
+    }
+
+    h1 a,
+    h2 a,
+    h3 a,
+    h4 a,
+    h5 a,
+    h6 a{
+     color: #eee;
+    }
+
+    table {
+      color: #bcccfd;
+      tbody > tr:nth-child(even) {
+        background: #6476ae;
+      }
+    }
   }
-}
-
-.dark {
-
 }
 
 .code-light {

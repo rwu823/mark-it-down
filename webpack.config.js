@@ -1,9 +1,13 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const isDev = !process.env.NODE_ENV
 const pkg = require('./package.json')
 const libName = pkg.name
 const fs = require('fs')
+
+const { NODE_ENV } = process.env
+const isDev = (!process.env.NODE_ENV)
+const isBuild = (NODE_ENV === 'build')
+const isDemo = (NODE_ENV === 'demo')
 
 const languages = fs.readdirSync(`${__dirname}/node_modules/prismjs/components`)
   .reduce((langs, lang)=> {
@@ -15,13 +19,13 @@ const languages = fs.readdirSync(`${__dirname}/node_modules/prismjs/components`)
 
 module.exports = {
   entry: {
-    [libName]: isDev
-      ? ['babel-polyfill', './dev/client']
-      : ['./src'],
+    [libName]: isBuild
+      ? ['./src']
+      : ['./dev/client'],
   },
   output: {
-    path: `${__dirname}/npm/dist`,
-    libraryTarget: isDev ? 'var' : 'commonjs2',
+    path: isBuild ? `${__dirname}/npm/dist` : `${__dirname}/gh-pages`,
+    libraryTarget: isBuild ? 'commonjs2' : 'var',
     filename: '[name].js',
   },
 
@@ -29,8 +33,19 @@ module.exports = {
     new webpack.DefinePlugin({
 
     }),
-    ...isDev ? [
-      new HtmlWebpackPlugin()
+    ...isBuild ? [
+
+    ] : [
+      new HtmlWebpackPlugin({
+        template: './dev/demo.html'
+      })
+    ],
+    ...isDemo ? [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      })
     ] : []
   ],
 
@@ -60,5 +75,5 @@ module.exports = {
 
   devtool: isDev ? 'eval' : false,
 
-  externals: isDev ? {} : [...Object.keys(pkg.dependencies), ...languages]
+  externals: isBuild ? [...Object.keys(pkg.dependencies), ...languages] : {}
 }
