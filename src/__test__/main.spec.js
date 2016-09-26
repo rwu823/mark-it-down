@@ -9,13 +9,13 @@ it('convert to html with no `hasHeadHash`', ()=> {
   expect(md.toHTML(markdown)).toMatch(`<h1>Install</h1>`)
 })
 
-it('convert to html with no `hasHeadHash`', ()=> {
+it('convert to html with `hasHeadHash`', ()=> {
   const md = new Markdown({
     hasHeadHash: true
   })
   const markdown = `# Install`
 
-  expect(md.toHTML(markdown)).toMatch(`<h1><a href="#install">Install</a></h1>`)
+  expect(md.toHTML(markdown)).toMatch(`<h1 id="install"><a href="#install">Install</a></h1>`)
 })
 
 it('convert to html with `code snippet`', ()=> {
