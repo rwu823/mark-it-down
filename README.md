@@ -1,3 +1,4 @@
+
 <p align="center">
   <img width="100" src="https://raw.githubusercontent.com/rwu823/mark-it-down/master/assets/logo.png" />
 </p>
@@ -17,7 +18,7 @@
 
 
 # mark-it-down
-The modern Markdown parser, painless and all in one, your good friend of write documentation.
+The modern Markdown parser, painless and all in one, your good friend of write documentation. It works well in Browser and Node.
 
 ## Demo
 `mark-it-down` provides two themes: the `light` and `dark`, check [here](http://rwu823.github.io/mark-it-down) to review.
@@ -48,7 +49,7 @@ const md = new Markdown({
 md.toHTML('## Browser Supported')
 
 // outputs
-<h2><a href="#browser-supported">Browser Supported</a><h2>
+<h2 id="browser-supported"><a href="#browser-supported">Browser Supported</a><h2>
 ```
 
 - `theme`: _[String]_ `light` or `dark`, the Markdown theme
