@@ -28,11 +28,46 @@ class Markdown {
     this.opts = opts
   }
 
+  mountToTextArea(textarea) {
+    const { opts } = this
+    const themeClass = s[opts.theme] || ''
+    const codeThemeClass = s[`code-${opts.codeTheme}`] || ''
+
+    let textareas
+    if (typeof textarea === 'string') {
+      textareas = Array.from(document.querySelectorAll(textarea))
+    } else {
+      textareas = [textarea]
+    }
+
+    textareas.forEach((textarea)=> {
+      const markdownDiv = document.createElement('div')
+
+      markdownDiv.classList.add('mark-it-down')
+
+      if (themeClass) {
+        markdownDiv.classList.add(themeClass)
+      }
+
+      if (codeThemeClass) {
+        markdownDiv.classList.add(codeThemeClass)
+      }
+
+      markdownDiv.innerHTML = this.toHTML(textarea.value)
+
+      textarea.parentNode.replaceChild(markdownDiv, textarea)
+
+      Array.from(markdownDiv.querySelectorAll('pre > code')).forEach((code)=> {
+        Prism.highlightElement(code)
+      })
+    })
+  }
+
   toHTML(markdownSyntax) {
     const { md } = _private.get(this)
     const { opts } = this
-    const themeClass = opts.theme
-    const codeThemeClass = `code-${opts.codeTheme}`
+    // const themeClass = s[opts.theme] || ''
+    // const codeThemeClass = s[`code-${opts.codeTheme}`] || ''
 
     let html = md.makeHtml(markdownSyntax)
 
@@ -40,7 +75,16 @@ class Markdown {
       html = linkHead(html)
     }
 
-    return `<div class="mark-it-down ${s[themeClass]} ${s[codeThemeClass]}">${html}</div>`
+    // html = html.replace(/<pre><code[^>]*>(((?!<\/code><\/pre>)[\s\S])*)<\/code><\/pre>/g, (m, m1)=> {
+    //   const type = m.match(/<code class="(\S*)/)[1]
+    //   const code = Prism.highlight(m1.trim(), Prism.languages[typeMap(type)])
+    //     .replace(/\&lt;/g, '<')
+    //     .replace(/\&gt;/g, '>')
+    //
+    //   return m.replace(m1, code)
+    // })
+
+    return html
   }
 
 }

@@ -10,7 +10,14 @@ const darkMD = new Markdown({
 const markdownSyntax = require('../README.md') + require('./doc.md')
 
 const body = document.body
+const _lightText = body.querySelector('#light-theme textarea')
+const _darkText = body.querySelector('#dark-theme textarea')
 
-body.querySelector('#light-theme').innerHTML = lightMD.toHTML(markdownSyntax)
-body.querySelector('#dark-theme').innerHTML = darkMD.toHTML(markdownSyntax)
+setTimeout(()=> {
+  _lightText.value = (markdownSyntax)
+  _darkText.value = (markdownSyntax)
+
+  lightMD.mountToTextArea(_lightText)
+  darkMD.mountToTextArea(_darkText)
+})
 

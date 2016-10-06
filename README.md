@@ -78,3 +78,7 @@ constructor(option = {}) {
 
 ### .toHTML(String)
 Convert markdown syntax to HTML.
+
+### .mountToTextArea(queryselector or textarea element)
+
+This is `browser` only, it mounts to a textarea element, and convert value to markdown HTML. 
